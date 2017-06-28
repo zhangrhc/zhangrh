@@ -61,8 +61,8 @@ class LoginCase(unittest.TestCase):
         self.dr.find_element_by_id('worklogTime4').send_keys((u"自动测试工作日志",t))
         self.dr.find_element_by_xpath("//textarea[@ng-model='worklog.work_solution']").send_keys(('自动测试工作日志').decode())
         #为下拉列表选择值，以下两条是录制脚本导出为python脚本后，拷贝出来的，不好取的元素可以使用这种方法取。但是通过js创建的控件是不能通过录制定位到元素的
-        Select(self.dr.find_element_by_xpath("//html[@id='ng-app']/body/div[3]/div/div/div[2]/table/tbody/tr[7]/td/select")).select_by_visible_text(u"远程")
-        Select(self.dr.find_element_by_xpath("//html[@id='ng-app']/body/div[3]/div/div/div[2]/table/tbody/tr[8]/td/select")).select_by_visible_text(u"本机构可见")
+        Select(self.dr.find_element_by_xpath("//select[@ng-model='worklog.service_way']")).select_by_visible_text(u"远程")
+        Select(self.dr.find_element_by_xpath("//select[@ng-model='worklog.access_control']")).select_by_visible_text(u"本机构可见")
         sleep(2)
         self.dr.find_element_by_xpath("//button[@translate='FUN_BT_35']").click()
         #由于提交后要跳转才能搜索到新的页面中元素，必须加sleep(3)以上
