@@ -53,37 +53,11 @@ class LoginCase(unittest.TestCase):
         sleep(1)
         link3=self.dr.find_element_by_id('0001ZZ1000000001QKBK').text
         self.assertTrue('域帐号预置权限' in link3)
-
-
-
-        '''
+        #自动验证规则设置
+        self.dr.find_element_by_xpath("//li[5][@id='pmng_admin']/a/span").click()
         sleep(1)
-        #打开新建工作日志界面
-        self.dr.find_element_by_xpath("//span[@translate='FUN_BT_66']").click()
-        sleep(1)
-        #为各个字段赋值，有默认值的使用默认值。
-        #为各个字段赋值，有默认值的使用默认值。由于send_key默认是utf-8所以必须把汉字转换成unicode，用函数decode()
-        self.dr.find_element_by_xpath("//a[@class='select2-choice select2-default']").click()
-        sleep(1)
-        #为a标签这种通过js实现的
-        self.dr.find_element_by_xpath("//div[@class='select2-result-label']").click()
-        sleep(2)
-        #获取当前的日期时间，并转换成字符串，因为send_keys函数中必须用字符串
-        t=time.strftime('%Y-%m-%d %H:%M:%S',time.localtime(time.time()))
-        #为各个字段赋值，有默认值的使用默认值。由于send_key默认是utf-8所以必须把汉字转换成unicode，用函数decode()
-        self.dr.find_element_by_id('worklogTime4').send_keys((u"自动测试工作日志",t))
-        self.dr.find_element_by_xpath("//textarea[@ng-model='worklog.work_solution']").send_keys(('自动测试工作日志').decode())
-        #为下拉列表选择值，以下两条是录制脚本导出为python脚本后，拷贝出来的，不好取的元素可以使用这种方法取。但是通过js创建的控件是不能通过录制定位到元素的
-        Select(self.dr.find_element_by_xpath("//select[@ng-model='worklog.service_way']")).select_by_visible_text(u"远程")
-        Select(self.dr.find_element_by_xpath("//select[@ng-model='worklog.access_control']")).select_by_visible_text(u"本机构可见")
-        sleep(2)
-        self.dr.find_element_by_xpath("//button[@translate='FUN_BT_35']").click()
-        #由于提交后要跳转才能搜索到新的页面中元素，必须加sleep(3)以上
-        sleep(3)
-        success_text=self.dr.find_element_by_xpath("//p[@style='overflow: hidden;white-space: nowrap;-o-text-overflow:ellipsis;text-overflow: ellipsis;']").text
-        self.assertIn(t, success_text)  #用assertIn(a,b)方法来断言 a in b
-        self.dr.get_screenshot_as_file("D:\\cnblogtest\\daily_log_success.jpg")
-    '''
+        link3=self.dr.find_element_by_id('0001ZZ1000000001SWFA').text
+        self.assertTrue('自动验证规则设' in link3)
 
     def tearDown(self):
         sleep(2)
